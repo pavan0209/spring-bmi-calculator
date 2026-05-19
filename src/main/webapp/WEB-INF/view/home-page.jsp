@@ -55,7 +55,6 @@
       <div class="dashboard-content">
         <span class="dashboard-tag"> HEALTH TRACKER </span>
         <h1>Calculate Your <span>BMI</span></h1>
-        <p>Track your body mass index and maintain a healthier lifestyle with BMI Fit dashboard.</p>
 
         <!-- BMI FORM -->
 
@@ -181,56 +180,78 @@
       <!-- RIGHT SIDE -->
 
       <div class="dashboard-sidebar">
-        <!-- RESULT CARD -->
+          <!-- ================= BMI REPORT CARD ================= -->
 
-        <div class="dashboard-card">
-          <div class="dashboard-card-header">
-            <div class="dashboard-icon">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
+          <div class="dashboard-card">
 
-            <h3>Your BMI</h3>
+              <!-- HEADER -->
+              <div class="dashboard-card-header">
+                  <div class="dashboard-icon">
+                      <i class="fa-solid fa-chart-line"></i>
+                  </div>
+                  <h3>BMI Report</h3>
+              </div>
+
+              <!-- BMI + STATUS -->
+              <div class="bmi-status-row">
+                  <h1 class="bmi-result">${bmiData.bmi}
+                  </h1>
+                  <span class="status-badge ${bmiData.status}">
+                      ${bmiData.status}
+                  </span>
+              </div>
+
+              <!-- FITNESS TIP -->
+
+                  <div class="tip-title">
+                      <i class="fa-solid fa-lightbulb"></i>
+                      <span>Fitness Tip</span>
+                  </div>
+                  <p style="white-space: pre-line;">
+                      ${bmiData.fitnessTip}
+                  </p>
+
           </div>
+          <br>
 
-          <div class="bmi-result">${bmiData.bmi != null ? bmiData.bmi : '0.0'}</div>
+          <!-- ================= BMI CATEGORY CARD ================= -->
+          <div class="dashboard-card">
+              <!-- HEADER -->
+              <div class="dashboard-card-header">
+                  <div class="dashboard-icon">
+                      <i class="fa-solid fa-heart-pulse"></i>
+                  </div>
+                  <h3>BMI Categories</h3>
+              </div>
 
-          <p>Your BMI result will appear here after calculation.</p>
-        </div>
+              <!-- CATEGORY LIST -->
+              <div class="category-list">
 
-        <!-- STATUS CARD -->
+                  <!-- UNDERWEIGHT -->
+                  <div class="category-item underweight">
+                      <span>Underweight</span>
+                      <span>Below 18.5</span>
+                  </div>
 
-        <div class="dashboard-card">
-          <div class="dashboard-card-header">
-            <div class="dashboard-icon">
-              <i class="fa-solid fa-heart-pulse"></i>
-            </div>
+                  <!-- HEALTHY -->
+                  <div class="category-item healthy">
+                      <span>Healthy</span>
+                      <span>18.5 - 24.9</span>
+                  </div>
 
-            <h3>Health Status</h3>
+                  <!-- OVERWEIGHT -->
+                  <div class="category-item overweight">
+                      <span>Overweight</span>
+                      <span>25.0 - 29.9</span>
+                  </div>
+
+                  <!-- OBESE -->
+                  <div class="category-item obese">
+                      <span>Obese</span>
+                      <span>30.0 & Above</span>
+                  </div>
+              </div>
           </div>
-
-        <div class="status-badge ${bmiData.status}">
-            ${bmiData.status.substring(0,1).toUpperCase().concat(bmiData.status.substring(1))}
-        </div>
-         <br>
-         <br>
-
-          <p>Your health category will be displayed here.</p>
-        </div>
-
-        <!-- INFO CARD -->
-
-        <div class="dashboard-card">
-          <div class="dashboard-card-header">
-            <div class="dashboard-icon">
-              <i class="fa-solid fa-lightbulb"></i>
-            </div>
-
-            <h3>Fitness Tip</h3>
-          </div>
-          <p style="white-space: pre-line;">
-              ${bmiData.fitnessTip}
-          </p>
-        </div>
       </div>
     </section>
     <!-- JS -->
