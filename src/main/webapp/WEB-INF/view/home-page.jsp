@@ -83,7 +83,7 @@
                     placeholder="Enter your height"
                     min="50"
                     max="300"
-                    required/>
+                    required="required"/>
 
                     <button type="button"
                               class="clear-input-btn"
@@ -208,12 +208,8 @@
             <h3>Health Status</h3>
           </div>
 
-        <div class="status-badge ${bmiData.status != null ? bmiData.status : 'awaiting'}">
-            ${bmiData.status != null
-                ? bmiData.status.substring(0,1).toUpperCase().concat(bmiData.status.substring(1))
-                : 'Awaiting Result'
-            }
-
+        <div class="status-badge ${bmiData.status}">
+            ${bmiData.status.substring(0,1).toUpperCase().concat(bmiData.status.substring(1))}
         </div>
          <br>
          <br>
@@ -232,10 +228,7 @@
             <h3>Fitness Tip</h3>
           </div>
           <p style="white-space: pre-line;">
-              ${bmiData.fitnessTip != null
-                  ? bmiData.fitnessTip
-                  : 'Maintain balanced nutrition and regular exercise to improve your fitness journey.'
-              }
+              ${bmiData.fitnessTip}
           </p>
         </div>
       </div>

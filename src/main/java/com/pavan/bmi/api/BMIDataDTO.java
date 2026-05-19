@@ -4,9 +4,9 @@ public class BMIDataDTO {
 
     private int height = 150;
     private int weight = 50;
-    private double bmi;
-    private String status;
-    private String fitnessTip;
+    private double bmi = 0.0;
+    private String status = "awaiting";
+    private String fitnessTip = "Maintain balanced nutrition and regular exercise to improve your fitness journey.";
 
     public int getHeight() {
         return height;
