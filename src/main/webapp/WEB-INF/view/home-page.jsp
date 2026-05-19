@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -60,80 +62,74 @@
         <div class="bmi-form-card">
           <h2>BMI Calculator</h2>
 
-          <form action="calculateBMI" method="get" class="bmi-form">
+          <form:form action="calculateBMI" method="get" class="bmi-form" modelAttribute="bmiData">
 
             <!-- HEIGHT -->
 
             <div class="form-group">
 
-                <label>
-                    <i class="fa-solid fa-ruler-vertical"></i>
-                    Height (cm)
+                <label for="height">
+                   <i class="fa-solid fa-ruler-vertical"></i>
+                   Height (cm)
                 </label>
 
                 <div class="input-wrapper">
 
-                    <input type="number"
-                           id="height"
-                           name="height"
-                           value="${bmiData.height}"
-                           placeholder="Enter your height"
-                           min="50"
-                           max="300"
-                           required/>
+                 <form:input
+                    type="number"
+                    id="height"
+                    path="height"
+                    value="${bmiData.height}"
+                    placeholder="Enter your height"
+                    min="50"
+                    max="300"
+                    required/>
 
                     <button type="button"
-                            class="clear-input-btn"
-                            onclick="clearInput('height')">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            </div>
+                              class="clear-input-btn"
+                              onclick="clearInput('height')">
+                          <i class="fa-solid fa-xmark"></i>
+                      </button>
+                  </div>
+              </div>
 
-            <!-- WEIGHT -->
+              <!-- WEIGHT -->
 
-            <div class="form-group">
+              <div class="form-group">
+                  <label for="weight">
+                      <i class="fa-solid fa-weight-scale"></i>
+                      Weight (kg)
+                  </label>
 
-                <label>
-                    <i class="fa-solid fa-weight-scale"></i>
-                    Weight (kg)
-                </label>
+                  <div class="input-wrapper">
 
-                <div class="input-wrapper">
+                      <form:input
+                              type="number"
+                              id="weight"
+                              path="weight"
+                              value="${bmiData.weight}"
+                              placeholder="Enter your weight"
+                              min="10"
+                              max="500"
+                              required="required"/>
 
-                    <input type="number"
-                           id="weight"
-                           name="weight"
-                           value="${bmiData.weight}"
-                           placeholder="Enter your weight"
-                           min="10"
-                           max="500"
-                           required/>
+                      <button type="button" class="clear-input-btn" onclick="clearInput('weight')">
+                          <i class="fa-solid fa-xmark"></i>
+                      </button>
+                  </div>
+              </div>
 
-                    <button type="button"
-                            class="clear-input-btn"
-                            onclick="clearInput('weight')">
+              <!-- BUTTON -->
 
-                        <i class="fa-solid fa-xmark"></i>
+              <input type="submit"
+                     value="Calculate BMI"
+                     class="auth-submit-btn"/>
 
-                    </button>
-
-                </div>
-
-            </div>
-
-            <!-- BUTTON -->
-
-            <input type="submit"
-                   value="Calculate BMI"
-                   class="auth-submit-btn"/>
-
-            <button type="button" class="secondary-btn email-btn" onclick="openEmailModal()">
-              <i class="fa-solid fa-envelope"></i>
-
-              Send Result To Email
-            </button>
-          </form>
+              <button type="button" class="secondary-btn email-btn" onclick="openEmailModal()">
+                  <i class="fa-solid fa-envelope"></i>
+                  Send Result To Email
+              </button>
+          </form:form>
         </div>
       </div>
 

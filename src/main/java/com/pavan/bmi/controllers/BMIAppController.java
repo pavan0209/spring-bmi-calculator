@@ -2,9 +2,8 @@ package com.pavan.bmi.controllers;
 
 import com.pavan.bmi.api.BMIDataDTO;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BMIAppController {
@@ -15,12 +14,13 @@ public class BMIAppController {
     }
 
     @RequestMapping("/home")
-    public String home() {
+    public String home(@ModelAttribute("bmiData") BMIDataDTO bmiDataDTO) {
+
         return "home-page";
     }
 
     @RequestMapping("/calculateBMI")
-    public String calculateBMI(BMIDataDTO bmiDataDTO, Model model) {
+    public String calculateBMI(@ModelAttribute("bmiData") BMIDataDTO bmiDataDTO) {
 
         // CONVERT HEIGHT CM TO METER
         double heightInMeter = bmiDataDTO.getHeight() / 100.0;
@@ -50,13 +50,9 @@ public class BMIAppController {
             status = "obese";
             fitnessTip = "Start with small lifestyle improvements and daily physical activity. Consult healthcare professionals for a personalized fitness plan.";
         }
-
         bmiDataDTO.setBmi(bmi);
         bmiDataDTO.setStatus(status);
         bmiDataDTO.setFitnessTip(fitnessTip);
-
-        // SEND DATA TO JSP
-        model.addAttribute("bmiData", bmiDataDTO);
 
         return "home-page";
     }

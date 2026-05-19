@@ -2,8 +2,8 @@ package com.pavan.bmi.api;
 
 public class BMIDataDTO {
 
-    private int height;
-    private int weight;
+    private int height = 150;
+    private int weight = 50;
     private double bmi;
     private String status;
     private String fitnessTip;
